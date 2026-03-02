@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Painel Admin</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+<h2>Login</h2>
+<input type="email" id="email" placeholder="Email">
+<input type="password" id="password" placeholder="Senha">
+<button onclick="login()">Entrar</button>
+
+<hr>
+
+<h2>Criar Autor</h2>
+<input type="text" id="authorName" placeholder="Nome do Autor">
+<input type="text" id="authorBio" placeholder="Bio">
+<button onclick="createAuthor()">Salvar Autor</button>
+
+<hr>
+
+<h2>Autores Cadastrados</h2>
+<ul id="authorsList"></ul>
+
+<script src="app.js"></script>
+</body>
+</html>

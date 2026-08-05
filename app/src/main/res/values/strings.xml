@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Voz em Camadas</string>
+    <string name="capture_channel_name">Gravação de áudio</string>
+    <string name="capture_notification_title">Voz em Camadas está gravando</string>
+</resources>

@@ -95,14 +95,15 @@ class CaptureService : Service() {
                 @Suppress("DEPRECATION")
                 val resultData = intent.getParcelableExtra<Intent>(EXTRA_RESULT_DATA) ?: error("Autorização de captura ausente")
                 val projectionManager = getSystemService(MediaProjectionManager::class.java)
-                mediaProjection = projectionManager.getMediaProjection(resultCode, resultData).also { projection ->
-                    projection.registerCallback(object : MediaProjection.Callback() {
-                        override fun onStop() {
-                            if (running.getAndSet(false)) CaptureEvents.status("stopping", "A autorização do Android foi encerrada. Finalizando o áudio…")
-                        }
-                    }, Handler(Looper.getMainLooper()))
-                }
-                internalRecord = buildInternalRecord(mediaProjection ?: error("Não foi possível iniciar a captura interna"))
+                val projection = projectionManager.getMediaProjection(resultCode, resultData)
+                    ?: error("Não foi possível iniciar a captura interna")
+                projection.registerCallback(object : MediaProjection.Callback() {
+                    override fun onStop() {
+                        if (running.getAndSet(false)) CaptureEvents.status("stopping", "A autorização do Android foi encerrada. Finalizando o áudio…")
+                    }
+                }, Handler(Looper.getMainLooper()))
+                mediaProjection = projection
+                internalRecord = buildInternalRecord(projection)
             }
             if (activeMode != "internal") microphoneRecord = buildMicrophoneRecord()
 

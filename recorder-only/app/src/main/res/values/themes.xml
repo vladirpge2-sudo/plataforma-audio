@@ -1,0 +1,9 @@
+<resources>
+    <style name="Theme.GravadorInterno" parent="android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:colorAccent">#145C4A</item>
+        <item name="android:navigationBarColor">#F4F0E7</item>
+        <item name="android:statusBarColor">#17332D</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+</resources>
